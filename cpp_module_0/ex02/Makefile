@@ -1,6 +1,6 @@
 NAME		=	annuaire
 
-SRCS		=	ClassAnnuaire.cpp main.cpp
+SRCS		=	Account.cpp test.cpp
 
 OBJS		=	${SRCS:.cpp=.o}
 
