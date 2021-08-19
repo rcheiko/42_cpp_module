@@ -1,6 +1,6 @@
-NAME		=	annuaire
+NAME		=	bank
 
-SRCS		=	Account.cpp test.cpp
+SRCS		=	Account.cpp tests.cpp
 
 OBJS		=	${SRCS:.cpp=.o}
 
