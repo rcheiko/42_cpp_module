@@ -6,12 +6,13 @@
 /*   By: rcheiko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/17 14:17:59 by rcheiko           #+#    #+#             */
-/*   Updated: 2021/08/19 13:44:24 by rcheiko          ###   ########.fr       */
+/*   Updated: 2021/08/19 15:42:45 by rcheiko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Account.hpp"
+#include <time.h> 
 
 int	Account::_nbAccounts = 0;
 int	Account::_totalAmount = 0;
@@ -41,6 +42,21 @@ Account::~Account( void )
 	std::cout << ";amount:" << checkAmount();
 	std::cout << ";closed" << std::endl;
 	return;
+}
+
+void	Account::_displayTimestamp( void )
+{
+  time_t rawtime;
+  struct tm * timeinfo;
+  char t[19];
+
+  time (&rawtime);
+  timeinfo = localtime (&rawtime);
+
+  strftime (t,19,"[%G%m%e_%H%M%S] ",timeinfo);
+  std::cout << t;
+
+    return;
 }
 
 void	Account::displayAccountsInfos( void )
@@ -136,11 +152,6 @@ void	Account::displayStatus( void ) const
 	else
 		std::cout << ";withdrawals:0" << std::endl;
 	return;
-}
-
-void	Account::_displayTimestamp( void )
-{
-	std::cout << "[19920104_091532] ";
 }
 
 int	Account::getNbAccounts( void )
