@@ -6,7 +6,7 @@
 /*   By: rcheiko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 13:47:09 by rcheiko           #+#    #+#             */
-/*   Updated: 2021/08/25 16:09:10 by rcheiko          ###   ########.fr       */
+/*   Updated: 2021/08/26 13:14:26 by rcheiko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main ( int ac, char **av )
 		return (1);
 	}
 	filename = av[1];
-	filename += ".replace";
+	//filename += ".replace";
 
 	std::fstream	fs;
 	std::string		test;
@@ -44,15 +44,16 @@ int main ( int ac, char **av )
 	{
 		pos = test.find(av[2]);
 		if (pos == std::string::npos)
-			return (0);
+			break;
 		result = test.substr(0, pos);
 		result += test.substr(pos + strlen(av[2]));
 		result.insert(pos, av[3]);
 		test = result;
-		std::ofstream ofs(filename);
-		ofs << test << std::endl;
-		ofs.close();
 	}
-
+	std::cout << test << std::endl;
+	filename += ".replace";
+	std::ofstream ofs(filename);
+	ofs << test << std::endl;
+	ofs.close();
 	return (0);
 }
